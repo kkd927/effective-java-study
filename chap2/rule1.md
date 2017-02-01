@@ -42,8 +42,9 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
   
 #### 4. public이나 protected로 선언된 생성자가 없으므로 하위 클래스를 만들 수 없다.
 
-- 계승(inheritance) 대신 구성(composition) 기법을 쓰도록 장려.
+  - 계승(inheritance) 대신 구성(composition) 기법을 쓰도록 장려.
 
 #### 5. 정적 팩터리 메서드가 다른 정적 메서드와 확연히 구분되지 않는다.
 
-- 
+- 클래스나 인터페이스 주석을 통해 정적 팩터리 메서드임을 표시.
+- 흔히 쓰이는 정적 팩터리 메서드 이름 사용 (valueOf, of, getInstance, newInstance, get*Type*, new*Type*).
