@@ -84,8 +84,27 @@ public class NutritionFacts {
 ```
 
 - 객체가 변경 불가능, 모든 인자의 기본 값이 한곳에 모여있다.
-- 인자에 <a href="http://kevinx64.net/198" target="_blank">불변식(invariant)</a>을 적용 가능하다.
+- 인자에 [불변식(invariant)](http://kevinx64.net/198)을 적용 가능하다.
 build 메서드 안에서 해당 불변식이 위반되었는지 검사할 수 있다.
+
+```JAVA
+/**
+ *  @pre    calories >= 0
+ *  @post   getCalories() == val
+ */
+pulbic Builder setName(int val){
+	calories = val;
+	return this;
+}
+
+public NutritionFacts build() {
+	if (calories < 0) {
+		throw new IllegalStateException();
+	}
+	return new NutritionFacts(this);
+}
+```
+
 - 빌더 객체는 여러 개의 varargs 인자를 받을 수 있다.
 - 객체를 생성하려면 우선 빌더 객체를 생성해야되므로 성능이 중요한 상황에선 오버헤드가 문제.
 
