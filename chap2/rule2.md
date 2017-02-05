@@ -92,7 +92,7 @@ build 메서드 안에서 해당 불변식이 위반되었는지 검사할 수 �
  *  @pre    calories >= 0
  *  @post   getCalories() == val
  */
-pulbic Builder setName(int val){
+public Builder setName(int val){
 	calories = val;
 	return this;
 }
