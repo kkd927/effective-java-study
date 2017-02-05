@@ -41,3 +41,53 @@ cocaCola.setCaloires(100);
 
 - 1회의 함수 호출로 객체 생성을 끝낼 수 없으므로, 객체 일관성(consistency)이 일시적으로 깨질 수 있다.
 - 자바빈 패턴으로는 변경 불가능(immutable) 클래스를 만들 수 없다.
+
+### 3. 빌더(Builder) 패턴
+
+점층적 생성자 패턴의 안정성에 자바빈 패턴의 가독성을 결합한 세 번째 대안.
+
+```JAVA
+public class NutritionFacts {
+	private final int servingSize;
+  private final int servings;
+  private final int calories;
+  private final int fat;
+
+	public static class Builder {
+		// 필수 인자
+		private final int servingSize;
+		private final int servings;
+		// 선택 인자
+		private int calories = 0;
+		private int fat = 0;
+
+		public Builder(int servingSize, int servings) {
+			this.servingSize = servingSize;
+			this.servings = servings;
+		}
+
+		public Bulder calories(int val) { calories = val; return this; }
+		public Builder fat(int val) { fat = val; return this; }
+
+		public NutritionFacts build() {
+			return new NutritionFacts(this);
+		}
+	}
+
+	private NutritionFacts(Builder builder) {
+		servings = builder.servingSize;
+		servings = builder.servings;
+		calories = builder.calories;
+		fat = builder.fat;
+	}
+}
+```
+
+- 객체가 변경 불가능, 모든 인자의 기본 값이 한곳에 모여있다.
+- 인자에 불변식(invariant)을 적용 가능하다.
+build 메서드 안에서 해당 불변식이 위반되었는지 검사할 수 있다.
+- 빌더 객체는 여러 개의 varargs 인자를 받을 수 있다.
+- 객체를 생성하려면 우선 빌더 객체를 생성해야되므로 성능이 중요한 상황에선 오버헤드가 문제.
+
+### 요약
+빌더 패턴은 인자가 많은 생성자나 정적 팩터리가 필요한 클래스를 설계할 때, 특히 대부분의 인자가 선택적 인자인 상황에 유용
