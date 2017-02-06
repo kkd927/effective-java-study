@@ -30,7 +30,8 @@ public class Elvis {
 - API를 변경하지 않고도 싱글턴 패턴을 포기할 수 있다.
 - 제네릭 타입을 수용하기 쉽다.
 
-#### 위 방법들은 AccessibleObject.setAccessible 메서드의 도움을 받아 권한을 획득한 클라이언트는 리플렉션(reflection) 기능을 통해 private 생성자를 호출할 수 있다.
+### 위 방법들의 단점
+- AccessibleObject.setAccessible 메서드의 도움을 받아 권한을 획득한 클라이언트는 리플렉션(reflection) 기능을 통해 private 생성자를 호출할 수 있다.
 
 ```JAVA
 import java.lang.reflect.Constructor;
@@ -49,3 +50,17 @@ class Private {
   private Private() { ... }
 }
 ```
+
+- 직렬화 기능(Serializable) 클래스로 만들려면 클래스 선언에 implements Serializable을 추가하는 것으로 부족.
+- 모든 필드를 transient로 선언하고 readResolve 메서드를 추가.
+(그렇지 않으면 serialize된 객체가 역직렬화(deserialize)될 때마다 새로운 객체가 생기게 된다.)
+
+```JAVA
+// 싱글턴 상태를 유지하기 위한 readResolve 구현
+private Object readResolve() {
+  // 동일한 Elvis 객체가 반환되도록 하는 동시에, 가짜 Elivs 객체는 GC가 처리하도록 만든다.
+  return INSTANCE;
+}
+```
+
+### 3. 원소가 하나뿐인 enum 자료형을 이용.
