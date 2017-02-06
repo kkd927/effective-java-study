@@ -64,3 +64,17 @@ private Object readResolve() {
 ```
 
 ### 3. 원소가 하나뿐인 enum 자료형을 이용.
+
+```JAVA
+public enum Evlis {
+  INSTANCE;
+  
+  public void leaveTheBuilding() { ... }
+}
+```
+
+- 기능적으로는 public 필드를 사용하는 구현법과 동등.
+- 좀 더 간결하고 직렬화가 자동으로 처리된다.
+- 리플렉션(reflection)을 통한 공격에도 안전하다.
+
+### 요약
