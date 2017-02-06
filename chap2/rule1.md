@@ -48,3 +48,10 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 
 - 클래스나 인터페이스 주석을 통해 정적 팩터리 메서드임을 표시.
 - 흔히 쓰이는 정적 팩터리 메서드 이름 사용 (valueOf, of, getInstance, newInstance, get*Type*, new*Type*).
+
+```
+valueOf: 인자로 주어진 값과 같은 값을 갖는 객체를 반환
+of: valueOf를 더 간단하게 쓴 것
+getInstance: 인자에 기술된 객체 반환, 싱글톤 패턴을 따를 경우, 인자 없이 항상 같은 객체 반환 
+newInstance: getInstance와 같지만 호출할 때마다 다른 객체 반환
+```
