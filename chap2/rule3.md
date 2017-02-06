@@ -52,8 +52,7 @@ class Private {
 ```
 
 - 직렬화 기능(Serializable) 클래스로 만들려면 클래스 선언에 implements Serializable을 추가하는 것으로 부족.
-- 모든 필드를 transient로 선언하고 readResolve 메서드를 추가. ([참고](http://hyeonstorage.tistory.com/254))
-(그렇지 않으면 serialize된 객체가 역직렬화(deserialize)될 때마다 새로운 객체가 생기게 된다.)
+- 모든 필드를 transient로 선언하고 readResolve 메서드를 추가. ([참고](http://hyeonstorage.tistory.com/254)) <br/>(그렇지 않으면 serialize된 객체가 역직렬화(deserialize)될 때마다 새로운 객체가 생기게 된다.)
 
 ```JAVA
 // 싱글턴 상태를 유지하기 위한 readResolve 구현
