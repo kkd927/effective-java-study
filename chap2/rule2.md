@@ -48,10 +48,10 @@ cocaCola.setCaloires(100);
 
 ```JAVA
 public class NutritionFacts {
-	private final int servingSize;
-  private final int servings;
-  private final int calories;
-  private final int fat;
+    private final int servingSize;
+    private final int servings;
+    private final int calories;
+    private final int fat;
 
 	public static class Builder {
 		// 필수 인자
@@ -66,7 +66,7 @@ public class NutritionFacts {
 			this.servings = servings;
 		}
 
-		public Bulder calories(int val) { calories = val; return this; }
+		public Builder calories(int val) { calories = val; return this; }
 		public Builder fat(int val) { fat = val; return this; }
 
 		public NutritionFacts build() {
@@ -92,7 +92,7 @@ build 메서드 안에서 해당 불변식이 위반되었는지 검사할 수 �
  *  @pre    calories >= 0
  *  @post   getCalories() == val
  */
-public Builder setName(int val){
+public Builder calories(int val){
 	calories = val;
 	return this;
 }
