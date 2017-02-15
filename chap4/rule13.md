@@ -12,6 +12,7 @@
 - package-private로 선언된 최상위 클래스나 인터페이스를 사용하는 클래스(사용자 클래스)가 하나뿐이라면 사용자 클래스의 private 중첩 클래스로 고려
 - 필드나 메서드, 중첩 클래스(nested class), 중첩 인터페이스(neseted interface) 같은 멤버의 접근 권한은 최대한 private (꼭 다른 클래스가 사용해야 하는 경우만 package-private)
 - public 클래스의 멤버들은 protected 사용을 자제(최대한 package-private)
+
 ### 2. 객체 필드(instance field)는 절대로 public으로 선언하면 안된다
 
 - 비-final 필드나 변경 가능 객체에 대한 final 참조 필드를 public으로 선언하면, 필드에 저장될 값을 제한 불가 (불변식을 강제 못함)
