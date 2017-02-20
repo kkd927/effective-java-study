@@ -42,7 +42,6 @@ public class BigInteger extends Number implements Comparable<BigInteger> {
 대부분의 변경 불가능 클래스가 따르는 패턴이고 ___함수형 접근법(functional approach)___으로도 알려져있다.
 
 ### 변경 불가능 클래스의 장점
--
 
 #### 1. 변경 불가능 객체는 단순하다.
 
