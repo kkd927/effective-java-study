@@ -37,5 +37,6 @@ public class BigInteger extends Number implements Comparable<BigInteger> {
   }
 }
 ```
-  
-  
+자바 플랫폼 라이브러리의 String, 기본 자료형 클래스, BigInteger, BigDecimal 등이 변경 불가능한 클래스이다.
+사칙연산 각각은 this 객체를 변경하는 대신 새로운 BigInteger 객체를 만들어 반환하도록 구현되어 있음을 유의하라. 
+대부분의 변경 불가능 클래스가 따르는 패턴이고 함수형 접근법(functional approach)으로도 알려져있다.
