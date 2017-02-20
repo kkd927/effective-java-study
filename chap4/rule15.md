@@ -14,6 +14,9 @@
   
   
 ```java
+/**
+ * @author  Josh Bloch (책 저자 ㅋ)
+ */
 public class BigInteger extends Number implements Comparable<BigInteger> {
   final int signum;
   final int[] mag;
