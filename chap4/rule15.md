@@ -60,3 +60,38 @@ public static final Complex ONE = new Complex(1, 0);
 ```
 
 자주 사용되는 값을 public static final 상수로 만들어 제공하는 것이다.
+
+```java
+public class BigInteger extends Number implements Comparable<BigInteger> {
+	/**
+	 * The cache of powers of each radix.  This allows us to not have to
+	 * recalculate powers of radix^(2^n) more than once.  This speeds
+	 * Schoenhage recursive base conversion significantly.
+	 */
+	private static volatile BigInteger[][] powerCache;
+    
+	static {
+		for (int i = 1; i <= MAX_CONSTANT; i++) {
+		    int[] magnitude = new int[1];
+		    magnitude[0] = i;
+		    posConst[i] = new BigInteger(magnitude,  1);
+		    negConst[i] = new BigInteger(magnitude, -1);
+		}
+	
+	    /*
+	     * Initialize the cache of radix^(2^x) values used for base conversion
+	     * with just the very first value.  Additional values will be created
+	     * on demand.
+	     */
+	    powerCache = new BigInteger[Character.MAX_RADIX+1][];
+	    logCache = new double[Character.MAX_RADIX+1];
+	
+	    for (int i=Character.MIN_RADIX; i <= Character.MAX_RADIX; i++) {
+	        powerCache[i] = new BigInteger[] { BigInteger.valueOf(i) };
+	        logCache[i] = Math.log(i);
+	    }
+	}
+}
+```
+
+더 발전하면 변경 불가능 클래스는 자주 사용하는 객체를 캐시하여 이미 잇는 객체가 거듭 생성되지 않도록 하는 정적 팩터리를 제공할 수 있다. 기본 자료형에 대한 객체 클래스들(boxed primitive class)과 BigInteger 클래스는 그렇게 구현되어 있다.
