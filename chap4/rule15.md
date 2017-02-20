@@ -98,3 +98,33 @@ public class BigInteger extends Number implements Comparable<BigInteger> {
 ```
 
 더 발전하면 변경 불가능 클래스는 자주 사용하는 객체를 캐시하여 이미 잇는 객체가 거듭 생성되지 않도록 하는 정적 팩터리를 제공할 수 있다. 기본 자료형에 대한 객체 클래스들(boxed primitive class)과 BigInteger 클래스는 그렇게 구현되어 있다.
+
+### 단점의 대응 방법
+
+#### 1. 다단계 연산 가운데 자주 요구되는 것을 기본 연산(primitive)으로 제공하는 것이다.
+
+```java
+/*
+ * The Java language provides special support for the string
+ * concatenation operator (&nbsp;+&nbsp;), and for conversion of
+ * other objects to strings. String concatenation is implemented
+ * through the {@code StringBuilder}(or {@code StringBuffer})
+ * class and its {@code append} method.
+ */
+public final class String {
+	...
+}
+```
+
+#### 2. 변경 가능한 package-private 동료 클래스를 사용한다.
+
+클라이언트가 변경 불가능 클래스에 어떤 다단계 연산을 적용할지 정확하게 예측할 수 있을 때 쓸 수 있다.
+
+자바 플랫폼 라이브러리에 있는 좋은 사례는 String 클래스다. 이 클래스의 변경 가능 동료 클래소로는 StringBuilder가 있다.
+
+
+### 요약
+- 구현 규칙은, 어떤 메서드도 객체를 수정해서는 안 되며, 모든 필드는 final로 선언되어야 한다.(성능 향상을 위해서 완화할 수도 있다.)
+- 변경 가능한 클래스로 만들 타당한 이유가 없다면, 반드시 변경 불가능 클래스로 만들어야 한다.
+- 변경 불가능한 클래스로 만들 수 없다면, 변경 가능성을 최대한 제한하라.
+- 특별한 이유가 없다면 모든 필드를 final로 선언하라.
