@@ -99,6 +99,51 @@ public class BigInteger extends Number implements Comparable<BigInteger> {
 
 더 발전하면 변경 불가능 클래스는 자주 사용하는 객체를 캐시하여 이미 잇는 객체가 거듭 생성되지 않도록 하는 정적 팩터리를 제공할 수 있다. 기본 자료형에 대한 객체 클래스들(boxed primitive class)과 BigInteger 클래스는 그렇게 구현되어 있다.
 
+#### 4. 변경 불가능한 객체는 그 내부도 공유할 수 있다.
+
+```java
+/**
+ * This internal constructor differs from its public cousin
+ * with the arguments reversed in two ways: it assumes that its
+ * arguments are correct, and it doesn't copy the magnitude array.
+ */
+BigInteger(int[] magnitude, int signum) {
+    this.signum = (magnitude.length == 0 ? 0 : signum);
+    this.mag = magnitude;
+    if (mag.length >= MAX_MAG_LENGTH) {
+        checkRange();
+    }
+}
+
+/**
+ * Returns a BigInteger whose value is {@code (-this)}.
+ *
+ * @return {@code -this}
+ */
+public BigInteger negate() {
+    return new BigInteger(this.mag, -this.signum);
+}
+```
+
+negate 메서드는 같은 크기의 값을 부호만 바꿔서 새로운 BigInteger 객체로 반환한다.
+그러나 배열을 복사하지 않고 원래 객체와 같은 내부 배열을 참조한다.
+
+#### 5. 변경 불가능 객체는 다른 객체의 구성요소로도 훌륭하다.
+변경 불가능 객체는 맵의 키나 집합의 원소로 활용하기 좋다. 한번 집어놓고 나면 그 값이 변경되어 맵이나 집합의 불변식이 깨질 걱정은 하지 않다도 된다.
+
+### 변경 불가능 객체의 유일한 단점
+
+#### 1. 값마다 별도의 객체를 만들어야 한다.
+객체 생성 비용이 높을 가능성이 크다. 큰 객체라면 특히 더 그렇다.
+
+```java
+BigInteger moby = ...;
+moby = moby.flipBit(0);
+```
+
+moby가 백만 비트라면 원래 값과 딱 한 비트만 바꾸고 싶어도 새로운 BigInteger 객체를 생성해야된다.<br>
+단계별로 새로운 객체를 만들고 결국에는 마지막 객체를 제외한 모든 객체를 버리는 연산을 수행해야 하는 경우 성능 문제는 더 커진다.
+
 ### 단점의 대응 방법
 
 #### 1. 다단계 연산 가운데 자주 요구되는 것을 기본 연산(primitive)으로 제공하는 것이다.
@@ -118,8 +163,7 @@ public final class String {
 
 #### 2. 변경 가능한 package-private 동료 클래스를 사용한다.
 
-클라이언트가 변경 불가능 클래스에 어떤 다단계 연산을 적용할지 정확하게 예측할 수 있을 때 쓸 수 있다.
-
+클라이언트가 변경 불가능 클래스에 어떤 다단계 연산을 적용할지 정확하게 예측할 수 있을 때 쓸 수 있다.<br>
 자바 플랫폼 라이브러리에 있는 좋은 사례는 String 클래스다. 이 클래스의 변경 가능 동료 클래소로는 StringBuilder가 있다.
 
 
