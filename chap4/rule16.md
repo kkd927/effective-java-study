@@ -49,7 +49,7 @@ class ForwardingSet<E> implements Set<E> {
   public boolean isEmpty() 			    { return s.isEmpty(); }
   public int size() 					{ return s.size(); }
   public Iterator<E> iterator() 		{ return s.iterator(); }
-
+  ...
 }
 ```
 
