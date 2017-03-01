@@ -40,7 +40,7 @@ public final class Integer extends Number implements Comparable<Integer> {
 
 기본 자료형의 객체 표현형들(Integer나 Double)에는 MIN_VALUE와 MAX_VALUE 상수가 공개되어 있다.
 
-이런 상수들이 enum 자료형의 멤버가 되어야 바람직할 때는 enum 자료형(규칙 30)과 함께 공개해야 한다. 그렇지 않을 때는 해당 상수들을 객체 생성이 불가능한 유틸리티 클래스(규칙 4)에 넣어서 공개해야 한다.
+이런 상수들이 enum 자료형의 멤버가 되어야 바람직할 때는 enum 자료형(규칙 30)과 함께 공개해야 한다. 그렇지 않을 때는 해당 상수들을 객체 생성이 불가능한 유틸리티 클래스([규칙 4](/chap1/rule4.md))에 넣어서 공개해야 한다.
 
 ```java
 package com.test.java.science;
