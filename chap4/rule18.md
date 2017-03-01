@@ -33,7 +33,7 @@ public interface Songwriter {
 
 가수이자 작곡가인 경우 문법적 문제 없이 Singer와 Songwriter를 동시에 구현하는 클래스를 만들 수 있다.
 
-```
+```java
 public interface SingerSongwriter extends Singer, Songwriter {
 	AudioClip strum();
 	void actSensitive();
