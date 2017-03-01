@@ -42,7 +42,7 @@ public interface SingerSongwriter extends Singer, Songwriter {
 
 추상 클래스의 경우 필요한 조합마다 별도의 클래스를 만들어야하는 조합 폭증(combinatorial explosion) 문제를  겪을 수 있다.
 
-### 4. 인터페이스를 사용하면 포장 클래스 숙어(wrapper class idiom)을 통해 안전하면서도 강력한 기능 개선이 가능하다 ([규칙16](../rule16.md))
+### 4. 인터페이스를 사용하면 포장 클래스 숙어(wrapper class idiom)을 통해 안전하면서도 강력한 기능 개선이 가능하다 ([규칙16](/chap4/rule16.md))
 
 ### 5. 추상 골격 구현(abstract skeletal implementation) 클래스를 중요 인터페이스마다 두면, 인터페이스의 장점과 추상 클래스의 장점을 결합할 수 있다
 
@@ -107,7 +107,7 @@ public abstract class AbstractMapEntry<K,V>
 }
 ```
 
-골격 구현 클래스는 계승 용도로 설계하는 클래스이므로, [규칙 17](../rule17.md)의 모든 지침을 따라야 한다.
+골격 구현 클래스는 계승 용도로 설계하는 클래스이므로, [규칙 17](/chap4/rule17.md)의 모든 지침을 따라야 한다.
 
 골격 구현의 작은 변종 가운데 하나로는 간단 구현(simple implementation)이라는 것이 있으며, 그 사례는 AbstractMap.SimpleEntry에서 찾아볼 수 있다. 추상 클래스가 아니고 실제 동작하는 구현체 가운데 가장 간단한 형태이다.
 
