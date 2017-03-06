@@ -14,7 +14,7 @@ class StringLengthComparator {
 }
 ```
 
-위의 예제는 문자열을 비교하는 데 사용될 수 있는, 실행 가능 전략(concrete strategy)이다. 필드가 없고 그 모든 객체는 기능적으로 동일한 무상태(stateless) 클래스다. 싱글턴 패턴(singleton pattern)을 따르면 쓸데없는 객체 생성은 피할 수 있다.([규칙3](/chap1/rule3.md), [규칙5](/chap1/rule5.md))
+위의 예제는 문자열을 비교하는 데 사용될 수 있는, 실행 가능 전략(concrete strategy)이다. 필드가 없고 그 모든 객체는 기능적으로 동일한 무상태(stateless) 클래스다. 싱글턴 패턴(singleton pattern)을 따르면 쓸데없는 객체 생성은 피할 수 있다.([규칙3](/chap2/rule3.md), [규칙5](/chap2/rule5.md))
 
 ```java
 class StringLengthComparator {
