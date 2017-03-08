@@ -85,7 +85,15 @@ if (o instanceof Set) {
 ### 요약
 
 | 용어 | 예 |
-| ---- | ---- |
-| 형인자 자료형(parameterized type) | List&lt;String&gt; |
+| -- | -- |
+| 형인자 자료형(parameterized type) | List<String> |
 | 실 형인자(actual parameter) | String |
-
+| 제네릭 자료형(generic type) | List&lt;E&gt; |
+| 형식 형인자(formal type parameter) | E |
+| 비한정적 와일드카드 자료형(unbounded wildcard type) | List&lt;?&gt; |
+| 한정적 와일드카드 자료형(bounded wildcard type) | List&lt;? extends Number&gt; |
+| 무인자 자료형(raw type) | List |
+| 한정적 형인자(bounded type parameter) | &lt;E extends Number&gt; |
+| 재귀적 형 한정(recursive type bound) | &lt;T extends Comparable&lt;T&gt;&gt; |
+| 제네릭 메서드(generic method) | static &lt;E&gt; List&lt;E&gt; asList(E[] a) |
+| 자료형 토큰(type token) | String.class |
