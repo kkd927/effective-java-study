@@ -85,7 +85,7 @@ if (o instanceof Set) {
 ### 요약
 
 | 용어 | 예 |
-| -- | -- |
+| --- | --- |
 | 형인자 자료형(parameterized type) | List<String> |
 | 실 형인자(actual parameter) | String |
 | 제네릭 자료형(generic type) | List&lt;E&gt; |
@@ -97,3 +97,4 @@ if (o instanceof Set) {
 | 재귀적 형 한정(recursive type bound) | &lt;T extends Comparable&lt;T&gt;&gt; |
 | 제네릭 메서드(generic method) | static &lt;E&gt; List&lt;E&gt; asList(E[] a) |
 | 자료형 토큰(type token) | String.class |
+
