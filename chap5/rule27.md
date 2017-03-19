@@ -1,6 +1,6 @@
 ## 규칙27. 가능하면 제네릭 메서드로 만들 것
 
-__제네릭화(genericfication)__로 혜택을 보는 것은 클래스뿐만 아니다. 메서드도 혜택을 본다. static 유틸리티 메서드는 특히 제네릭화하기 좋은 후보다.
+__제네릭화(genericfication)__ 로 혜택을 보는 것은 클래스뿐만 아니다. 메서드도 혜택을 본다. static 유틸리티 메서드는 특히 제네릭화하기 좋은 후보다.
 
 ```java
 // 무인자 자료형 사용 - 권할 수 없는 방법(규칙23)
@@ -11,7 +11,7 @@ public static Set union(Set s1, Set s2) {
 }
 ```
 
-형인자를 선언하는 __형인자 목록(type parameter list)__은 메서드의 수정자(modifier)와 반환값 자료형 사이에 둔다.
+형인자를 선언하는 __형인자 목록(type parameter list)__ 은 메서드의 수정자(modifier)와 반환값 자료형 사이에 둔다.
 
 ```java
 // 제네릭 메서드
@@ -22,7 +22,7 @@ public static <E> Set<E> union(Set<E> s1, Set<E> s2) {
 }
 ```
 
-컴파일러는 union에 전달된 두 인자의 자료형으로 E의 자료형을 알아낼 수 있다. 이 과정을 __자료형 유추(type inference)__라 한다.
+컴파일러는 union에 전달된 두 인자의 자료형으로 E의 자료형을 알아낼 수 있다. 이 과정을 __자료형 유추(type inference)__ 라 한다.
 
 제네릭 생성자를 호출할 때는 형인자를 명시적으로 전달해야되는데, 성가신 일일 수 있다.
 
@@ -51,7 +51,7 @@ Map<String, List<String>> anagrams = newHashMap();
 Map<String, List<String>> anagrams = new HashMap<>();
 ```
 
-상대적으로 사용 빈도가 낮긴 하나, 형인자가 포함된 표현식으로 형인자를 한정하는 것도 가능하다. 이런 용볍을 __재귀적 자료형 한정(recursive type bound)__이라 한다.
+상대적으로 사용 빈도가 낮긴 하나, 형인자가 포함된 표현식으로 형인자를 한정하는 것도 가능하다. 이런 용볍을 __재귀적 자료형 한정(recursive type bound)__ 이라 한다.
 
 ```java
 // 재귀적 자료형 한정
