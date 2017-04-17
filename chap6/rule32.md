@@ -1,3 +1,5 @@
+/* Created by choijaesun1 */
+
 ## Rule 32. 비트 필드(bit field) 대신 EnumSet을 사용하라
 
 - 전통적인 int enum 패턴
