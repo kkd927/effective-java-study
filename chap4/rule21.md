@@ -27,7 +27,7 @@ class StringLengthComparator {
 }
 ```
 
-__실행 가능 전략 클래스(concrete strategy class)__ 객체를 메서드에 전달하기 위해서는 인자의 자료형이 맞아야 한다. 따라서 클래스에 어울리는 __전략 인터페이스(strategy interface)__를 정의할 필요가 있다.
+__실행 가능 전략 클래스(concrete strategy class)__ 객체를 메서드에 전달하기 위해서는 인자의 자료형이 맞아야 한다. 따라서 클래스에 어울리는 __전략 인터페이스(strategy interface)__ 를 정의할 필요가 있다.
 
 ```java
 // T를 형식 자료형 인자(formal type parameter)라고 부른다
@@ -85,7 +85,7 @@ public final class String implements java.io.Serializable, Comparable<String>, C
 }
 ```
 
-전략 인터페이스는 실행 가능 전략 객체들의 자료형 구실을 한다. 따라서 실행 가능 전략 클래스는 굳이 public으로 만들어 공개할 필요가 없다. 대신, 전략 인터페이스가 자료형인 public static 필드들을 갖는 __호스트 클래스(host class)__를 정의하는 것도 방법이다.
+전략 인터페이스는 실행 가능 전략 객체들의 자료형 구실을 한다. 따라서 실행 가능 전략 클래스는 굳이 public으로 만들어 공개할 필요가 없다. 대신, 전략 인터페이스가 자료형인 public static 필드들을 갖는 __호스트 클래스(host class)__ 를 정의하는 것도 방법이다.
 
 ### 요약
 
