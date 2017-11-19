@@ -62,7 +62,8 @@ static List<Integer> intArrayAsList(final int[] a) {
 			return a[i];
 		}
 		
-		@Override public Integer set(int i, Integer val) {			int oldVal = a[i];
+		@Override public Integer set(int i, Integer val) {
+			int oldVal = a[i];
 			a[i] = val;
 			return oldVal;
 		}
