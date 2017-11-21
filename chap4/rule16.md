@@ -36,7 +36,7 @@ public class InstrumentedHashSet<E> extends HashSet<E>{
 }
 ```
 
-이 코드에서 addAll(Arrays.asList(1,2,3)) 하면 addCount는 3이 될 것 같지만 실제로는 6이 된다. 그 이유는 addAll 은 HashSet에서 add를 사용하고 있기 때문이다. (HashSet 문서에는 명시 되어있지 않음)
+이 코드에서 addAll(Arrays.asList(1, 2, 3)) 하면 addCount는 3이 될 것 같지만 실제로는 6이 된다. 그 이유는 addAll은 HashSet에서 add를 사용하고 있기 때문이다. (HashSet 문서에는 명시 되어있지 않음)
 
 
 ### 대안, 구성(composition) 기법
