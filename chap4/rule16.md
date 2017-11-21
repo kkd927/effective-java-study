@@ -8,29 +8,29 @@
 
 ```java
 // 계승을 잘못 사용한 사례
-public class InstrumentedHashSet<E> extends HashSet<E>{
+public class InstrumentedHashSet<E> extends HashSet<E> {
    // 요소를 삽입하려 한 횟수
    private int addCount = 0;
 
    public InstrumentedHashSet() {}
 
-   public InstrumentedHashSet(int initCap, float loadFactor){
+   public InstrumentedHashSet(int initCap, float loadFactor) {
        super(initCap, loadFactor);
    }
 
    @Override
-   public boolean add(E e){
+   public boolean add(E e) {
        addCount++;
        return super.add(e);
    }
 
    @Override
-   public boolean addAll(Collection<? extends E> c){
+   public boolean addAll(Collection<? extends E> c) {
        addCount += c.size();
        return super.addAll(c);
    }
 
-   public int getAddCount(){
+   public int getAddCount() {
        return addCount;
    }
 }
@@ -45,7 +45,7 @@ public class InstrumentedHashSet<E> extends HashSet<E>{
 
 ```java
  // 계승 대신 구성을 사용하는 포장(wrapper) 클래스
- class InstrumentedSet<E> extends ForwardingSet<E>{
+ class InstrumentedSet<E> extends ForwardingSet<E> {
   private int addCount = 0;
 
   public InstrumentedSet(Set<E> s) {
@@ -53,18 +53,18 @@ public class InstrumentedHashSet<E> extends HashSet<E>{
   }
 
   @Override
-  public boolean add(E e){
+  public boolean add(E e) {
     addCount++;
     return super.add(e);
   }
 
   @Override
-  public boolean addAll(Collection<? extends E> c){
+  public boolean addAll(Collection<? extends E> c) {
     addCount += c.size();
     return super.addAll(c);
   }
 
-  public int getAddCount(){
+  public int getAddCount() {
     return addCount;
   }
 }
@@ -73,15 +73,15 @@ public class InstrumentedHashSet<E> extends HashSet<E>{
 class ForwardingSet<E> implements Set<E> {
   private final Set<E> s;
 
-  public ForwardingSet(Set<E> s){
+  public ForwardingSet(Set<E> s) {
     this.s = s;
   }
 
-  public void clear() 					{ s.clear(); }
+  public void clear() 					   { s.clear(); }
   public boolean contains(Object o) 	{ return s.contains(o); }
-  public boolean isEmpty() 			    { return s.isEmpty(); }
-  public int size() 					{ return s.size(); }
-  public Iterator<E> iterator() 		{ return s.iterator(); }
+  public boolean isEmpty() 			   { return s.isEmpty(); }
+  public int size() 					      { return s.size(); }
+  public Iterator<E> iterator() 		   { return s.iterator(); }
   ...
 }
 ```
