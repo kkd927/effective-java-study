@@ -77,11 +77,25 @@ class ForwardingSet<E> implements Set<E> {
     this.s = s;
   }
 
-  public void clear() 					   { s.clear(); }
-  public boolean contains(Object o) 	{ return s.contains(o); }
-  public boolean isEmpty() 			   { return s.isEmpty(); }
-  public int size() 					      { return s.size(); }
-  public Iterator<E> iterator() 		   { return s.iterator(); }
+  public void clear() { 
+    s.clear(); 
+  }
+  
+  public boolean contains(Object o) {
+    return s.contains(o);
+  }
+  
+  public boolean isEmpty() {
+    return s.isEmpty();
+  }
+  
+  public int size() {
+    return s.size();
+  }
+  
+  public Iterator<E> iterator() {
+    return s.iterator();
+  }
   ...
 }
 ```
