@@ -6,6 +6,39 @@
 
 상위 클래스의 구현은 릴리즈(release)가 거듭되면서 바뀔 수 있는데, 그러다 보면 하위 클래스 코드는 수정된 적이 없어도 망가질 수 있다. 상위 클래스 작성자가 계승을 고려해 클래스를 설계하고 문서까지 만들어 놓지 않았다면, 하위 클래스는 상위 클래스의 변화에 발맞춰 진화해야 한다.
 
+```java
+// 계승을 잘못 사용한 사례
+public class InstrumentedHashSet<E> extends HashSet<E>{
+   // 요소를 삽입하려 한 횟수
+   private int addCount = 0;
+
+   public InstrumentedHashSet() {}
+
+   public InstrumentedHashSet(int initCap, float loadFactor){
+       super(initCap, loadFactor);
+   }
+
+   @Override
+   public boolean add(E e){
+       addCount++;
+       return super.add(e);
+   }
+
+   @Override
+   public boolean addAll(Collection<? extends E> c){
+       addCount += c.size();
+       return super.addAll(c);
+   }
+
+   public int getAddCount(){
+       return addCount;
+   }
+}
+```
+
+이 코드에서 addAll(Arrays.asList(1,2,3)) 하면 addCount는 3이 될 것 같지만 실제로는 6이 된다. 그 이유는 addAll 은 HashSet에서 add를 사용하고 있기 때문이다. (HashSet 문서에는 명시 되어있지 않음)
+
+
 ### 대안, 구성(composition) 기법
 
 기존 클래스를 계승하는 대신, 새로운 클래스에 기존 클래스 객체를 참조하는 private 필드를 하나 두는 것이다. 이런 설계 기법을 구성(composition)이라고 부르는데, 새로운 클래스에 포함된 각각의 메서드는 기존 클래스에 있는 메서드 가운데 필요한 것을 호출해서 그 결과를 반환하면 된다. 이런 구현 기법을 전달(forwarding)이라고 하고, 전달 기법을 사용해 구현된 메서드를 전달 메서드(forwarding method)라고 부른다.
