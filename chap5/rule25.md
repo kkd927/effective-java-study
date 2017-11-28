@@ -12,7 +12,7 @@ Object[] objectArray = new Long[1];
 objectArray[0] = "I don't fit in" // ArrayStoreException 예외 발생
 ```
 
-Type1과 Type2가 있을 때, List<Type1>은 List<Type2>의 상위 자료형이나 하위 자료형이 될 수 없다.
+Type1과 Type2가 있을 때, List&lt;Type1&gt;은 List&lt;Type2&gt;의 상위 자료형이나 하위 자료형이 될 수 없다.
 
 ```java
 // 컴파일 되지 않는 코드
@@ -38,7 +38,7 @@ String s = stringLists[0].get(0);
 
 제네릭 자료형에 담긴 원소들의 자료형으로 만든 배열을 만든 배열을 반환하는 것은 일반적으로 불가능하다(규칙29에 부분적인 해결방안을 제시했다)
 
-제네릭 배열 생성 오류에 대한 가장 좋은 해결책은 보통 E[] 대신 List<E>를 쓰는 것이다. 성능이 저하되거나 코드가 길어질 수는 있겠으나, 형 안전성과 호환성은 좋아진다.
+제네릭 배열 생성 오류에 대한 가장 좋은 해결책은 보통 E[] 대신 List&lt;E&gt;를 쓰는 것이다. 성능이 저하되거나 코드가 길어질 수는 있겠으나, 형 안전성과 호환성은 좋아진다.
 
 ### 요약
 
