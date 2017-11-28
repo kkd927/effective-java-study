@@ -141,7 +141,7 @@ public static void main(String[] args) {
 }
 ```
 
-방금 살펴본 Stack과 같은 제네릭 자료형 거의 대부분은 형인자에 어떤 자료형도 쓸 수 있다. Stack<Object>, Stack<int[]>, Stack<List<String>> 등, 객체 참조에 사용할 수 있는 자료형이면 아무것이나 된다. 
+방금 살펴본 Stack과 같은 제네릭 자료형 거의 대부분은 형인자에 어떤 자료형도 쓸 수 있다. Stack&lt;Object&gt;, Stack&lt;int[]&gt;, Stack&lt;List&lt;String&gt;&gt; 등, 객체 참조에 사용할 수 있는 자료형이면 아무것이나 된다. 
 
 기본 자료형은 자바 제네릭 자료형 시스템의 근본적 한계 때문에 사용이 불가능하지만, 이런 제약을 피하려면 객체화된 기본 자료형(boxed primitive type)을 사용하면 된다(규칙49).
 
